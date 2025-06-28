@@ -95,7 +95,6 @@ export default function GameWindow() {
                 // Make sure we order the checks from least to most expensive for short circuit evaluation
                 if (emitter && !isCubeRotation(notation) && (await cube.isSolved())) {
                     socket.emit('player:completed_solve', socket.id);
-                    socket.off('keyboard:input');
                 }
             }
         });

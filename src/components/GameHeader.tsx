@@ -31,6 +31,13 @@ export default function Game() {
         socket.on('game:complete', () => {
             setRoomState(RoomState.GAME_ENDED);
         });
+
+        return () => {
+            socket.off('timer:update');
+            socket.off('inspection:start');
+            socket.off('solve:in_progress');
+            socket.off('game:complete');
+        }
     }, []);
 
     useEffect(() => {
