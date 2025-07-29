@@ -18,14 +18,16 @@ export default function PlayHome() {
         socket.on('room:found', (roomID) => {
             console.log('now joining room ', roomID);
             router.push(`play/${roomID}`);
-
-            socket.off('room:found');
         });
     }
 
     useEffect(() => {
         const socket = getSocket();
         setSocket(socket);
+
+        return () => {
+            socket.off('room:found');
+        }
     }, []);
 
     return (

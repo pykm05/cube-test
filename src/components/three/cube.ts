@@ -47,10 +47,10 @@ class Cube {
             id: (p as any).pieceId,
             position: p.position.clone(),
         }));
-
+        
         if (scramble) {
             this.instantScramble(scramble);
-    }
+        }
 
         this.render();
     }
